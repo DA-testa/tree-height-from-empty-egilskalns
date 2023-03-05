@@ -28,9 +28,9 @@ def main():
     text=input()
     for i, next in enumerate(text):
         if next in "IF":
-            text = input()
-    n=text[0]
-    text=text[2:]
+            n = input()
+            text=input()
+    n=n[0]
     parents=[int(i) for i in text.split(' ')]
     print(compute_height(n,parents))
 
