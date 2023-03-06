@@ -29,9 +29,18 @@ def main():
         text2=input()
         if "a" not in text2:
             file=open(text3+text2,"r")
-    n = int(input())
-    text=input()
-    parents=[int(i) for i in text.split(' ')]
+            text4=file.read()
+            n = int(text4.split()[0])
+            text4=text4.replace("\n", " ")
+            parents=[int(i) for i in text4.split(' ')]
+            
+            parents=parents[1:]
+            print(parents)
+            
+    if text1 == "I":
+        n = int(input())
+        text=input()
+        parents=[int(i) for i in text.split(' ')]
     print(compute_height(n,parents))
     file.close
     # implement input form keyboard and from files
