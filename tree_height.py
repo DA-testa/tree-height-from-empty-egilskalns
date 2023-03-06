@@ -23,15 +23,17 @@ def compute_height(n, parents):
 
 
 def main():
-    # n=int(input())
+    text1=input()
+    if text1=="F":
+        text3="/workspaces/tree-height-from-empty-egilskalns/test/"
+        text2=input()
+        if "a" not in text2:
+            file=open(text3+text2,"r")
+    n = int(input())
     text=input()
-    for i, next in enumerate(text):
-        if next in "IF":
-            n = int(input())
-            text=input()
     parents=[int(i) for i in text.split(' ')]
     print(compute_height(n,parents))
-
+    file.close
     # implement input form keyboard and from files
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
