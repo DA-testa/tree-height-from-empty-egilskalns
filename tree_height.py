@@ -4,20 +4,18 @@ import sys
 import threading
 
 def compute_height(n, parents):
-    check=[]
-    height=[]
-    for i in range(0,len(parents)):
-        check.insert(i,0)
-        height.insert(i,0)
+    check=[0]*n
+    height=[0]*n
 
-    for i in range(0,len(parents)):
-        while True:
-            if i==-1 or check[i]==1:
-                break
-            check.insert(i,1)
-            height[i]+=1
-            i=parents[i]
+    for i in range(n):
+        j=0
+        m=i
+        while m!=-1:
+            m=parents[m]
+            j+=1
+        height[i]+=j
     max_height = 0
+
     for i in height:
         if i>max_height:
             max_height=i
@@ -25,12 +23,12 @@ def compute_height(n, parents):
 
 
 def main():
+    # n=int(input())
     text=input()
     for i, next in enumerate(text):
         if next in "IF":
-            n = input()
+            n = int(input())
             text=input()
-    n=n[0]
     parents=[int(i) for i in text.split(' ')]
     print(compute_height(n,parents))
 
