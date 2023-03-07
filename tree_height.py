@@ -10,10 +10,18 @@ def compute_height(n, parents):
     for i in range(n):
         j=0
         m=i
+        if check[i]==1:
+            continue
+        if check[parents[i]]==1:
+            height[i]+=height[parents[i]]
+            continue
         while m!=-1:
+            check[m]=1
             m=parents[m]
             j+=1
+        
         height[i]+=j
+    
     max_height = 0
 
     for i in height:
@@ -30,19 +38,19 @@ def main():
         if "a" not in text2:
             file=open(text3+text2,"r")
             text4=file.read()
-            n = int(text4.split()[0])
-            text4=text4.replace("\n", " ")
+            file.close()
+            text4=text4.replace("\n"," ")
+            text4=text4.strip()
             parents=[int(i) for i in text4.split(' ')]
-            
+            n=parents[0]
             parents=parents[1:]
-            print(parents)
+            print(compute_height(n,parents))
             
     if text1 == "I":
         n = int(input())
         text=input()
         parents=[int(i) for i in text.split(' ')]
-    print(compute_height(n,parents))
-    file.close
+        print(compute_height(n,parents))
     # implement input form keyboard and from files
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
